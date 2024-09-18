@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Draggable : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D _selectedObject;
+    private Rigidbody2D _selectedObject;
     private Vector2 _offset;
     private Vector2 _mousePosition;
     [SerializeField] private float _maxSpeed = 10.0f;
