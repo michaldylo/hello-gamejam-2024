@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,10 +12,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _pauseDuration = 2f;
     [SerializeField] private float _pauseCooldown = 6f;
     private bool _isOnCooldown = false;
+    private bool _isFalling = true;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        // _moveSpeed *= 0.1f;
     }
 
     private void Update()
@@ -28,6 +32,11 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(StartCooldown());
             }
         }
+
+        if (Input.GetButtonDown("Reset"))
+        {
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     private void FixedUpdate()
@@ -37,6 +46,26 @@ public class PlayerController : MonoBehaviour
             Move();
         }
     }
+
+    // private void OnCollisionEnter2D(Collision2D other)
+    // {
+    //     if (_isFalling)
+    //     {
+    //         _moveSpeed *= 10f;
+    //     }
+
+    //     _isFalling = false;
+    // }
+
+    // private void OnCollisionExit2D(Collision2D other)
+    // {
+    //     if (!_isFalling)
+    //     {
+    //         _moveSpeed *= 0.1f;
+    //     }
+        
+    //     _isFalling = true;
+    // }
 
     private void Move()
     {
