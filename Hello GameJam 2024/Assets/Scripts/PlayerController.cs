@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 5.0f;
     private Rigidbody2D _rb;
-    public bool IsMoving = true;
+    [HideInInspector] public bool IsMoving = true;
 
     private void Start()
     {

@@ -8,6 +8,7 @@ public class Pause : MonoBehaviour
     [SerializeField] private float _pauseDuration = 2f;
     [SerializeField] private float _pauseCooldown = 6f;
     private bool _isOnCooldown = false;
+    [HideInInspector] public bool IsPaused = false;
 
     private void Start()
     {
@@ -28,6 +29,8 @@ public class Pause : MonoBehaviour
 
     private IEnumerator StartPause()
     {
+        IsPaused = true;
+        
         if (gameObject.CompareTag("Player"))
         {
             PlayerController playerController = GetComponent<PlayerController>();
@@ -50,6 +53,8 @@ public class Pause : MonoBehaviour
             PlayerController playerController = GetComponent<PlayerController>();
             playerController.IsMoving = true;
         }
+
+        IsPaused = false;
     }
 
     private IEnumerator StartCooldown()
