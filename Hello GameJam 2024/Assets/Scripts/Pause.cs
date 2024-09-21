@@ -80,4 +80,13 @@ public class Pause : MonoBehaviour
 
         IsOnCooldown = false;
     }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (IsPaused)
+        {
+            _rb.velocity = Vector2.zero;
+            _rb.angularVelocity = 0f;
+        }
+    }
 }

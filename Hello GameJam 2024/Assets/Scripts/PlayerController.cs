@@ -34,12 +34,4 @@ public class PlayerController : MonoBehaviour
     {
         _rb.MovePosition(_rb.position + _moveSpeed * Time.fixedDeltaTime * new Vector2(1, 0));
     }
-
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if (!IsMoving)
-        {
-            _rb.velocity = Vector2.zero;
-        }
-    }
 }
