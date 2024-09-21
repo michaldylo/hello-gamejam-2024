@@ -34,7 +34,7 @@ public class Draggable : MonoBehaviour
 
             Collider2D targetObject = Physics2D.OverlapPoint(_mousePosition);
 
-            if (targetObject && targetObject.GetComponent<Rigidbody2D>() && !targetObject.CompareTag("Player"))
+            if (targetObject && targetObject.GetComponent<Rigidbody2D>() && targetObject.gameObject.layer != 6)
             {
                 _selectedObject = targetObject.GetComponent<Rigidbody2D>();
                 _offset = _selectedObject.position - _mousePosition;
