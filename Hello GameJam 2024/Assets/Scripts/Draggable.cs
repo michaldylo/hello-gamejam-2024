@@ -10,6 +10,12 @@ public class Draggable : MonoBehaviour
     [SerializeField] private float _maxSpeed = 10.0f;
     private Vector2 _mouseForce;
     private Vector2 _lastPosition = Vector2.zero;
+    // private Rigidbody2D _rb;
+
+    // private void Start()
+    // {
+    //     _rb = GetComponent<Rigidbody2D>();
+    // }
 
     private void Update()
     {
@@ -24,6 +30,8 @@ public class Draggable : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            // _rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+
             Collider2D targetObject = Physics2D.OverlapPoint(_mousePosition);
 
             if (targetObject && targetObject.GetComponent<Rigidbody2D>() && !targetObject.CompareTag("Player"))
@@ -43,6 +51,8 @@ public class Draggable : MonoBehaviour
             {
                 _selectedObject.AddForce(_mouseForce, ForceMode2D.Impulse);
             }
+
+            // _rb.collisionDetectionMode = CollisionDetectionMode2D.Discrete;
 
             _selectedObject = null;
         }
