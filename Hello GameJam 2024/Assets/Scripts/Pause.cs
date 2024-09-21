@@ -12,8 +12,6 @@ public class Pause : MonoBehaviour
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-
-
     }
 
     private void Update()
@@ -36,8 +34,16 @@ public class Pause : MonoBehaviour
             playerController.IsMoving = false;
         }
 
+        float currentGravityScale = _rb.gravityScale;
+        _rb.gravityScale = 0f;
+        Vector2 currentVelocity = _rb.velocity;
         _rb.velocity = Vector2.zero;
+        float currentAngularVelocity = _rb.angularVelocity;
+        _rb.angularVelocity = 0f;
         yield return new WaitForSeconds(_pauseDuration);
+        _rb.gravityScale = currentGravityScale;
+        _rb.velocity = currentVelocity;
+        _rb.angularVelocity = currentAngularVelocity;
         
         if (gameObject.CompareTag("Player"))
         {
