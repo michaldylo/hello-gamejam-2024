@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        StartCoroutine(Accelerate());
     }
 
     private void Update()
@@ -33,5 +34,14 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         _rb.MovePosition(_rb.position + _moveSpeed * Time.fixedDeltaTime * new Vector2(1, 0));
+    }
+
+    private IEnumerator Accelerate()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            _moveSpeed += 0.1f;
+        }
     }
 }
