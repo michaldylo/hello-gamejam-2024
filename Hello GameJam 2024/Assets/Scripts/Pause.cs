@@ -5,21 +5,23 @@ using UnityEngine;
 public class Pause : MonoBehaviour
 {
     private Rigidbody2D _rb;
-    [SerializeField] private float _pauseDuration = 2f;
-    [SerializeField] private float _pauseCooldown = 6f;
-    private bool _isOnCooldown = false;
+    [SerializeField] private int _pauseDuration = 2;
+    [SerializeField] private int _pauseCooldown = 6;
+    [HideInInspector] public bool IsOnCooldown = false;
     [HideInInspector] public bool IsPaused = false;
+    [HideInInspector] public int Cooldown;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        Cooldown = _pauseCooldown;
     }
 
     private void Update()
     {
         if (Input.GetButtonDown("Pause"))
         {
-            if (!_isOnCooldown)
+            if (!IsOnCooldown && !IsPaused)
             {
                 StartCoroutine(StartPause());
                 StartCoroutine(StartCooldown());
@@ -59,8 +61,23 @@ public class Pause : MonoBehaviour
 
     private IEnumerator StartCooldown()
     {
-        _isOnCooldown = true;
-        yield return new WaitForSeconds(_pauseDuration + _pauseCooldown);
-        _isOnCooldown = false;
+        // yield return new WaitForSeconds(_pauseDuration + _pauseCooldown);
+
+        for (int i = _pauseDuration; i > 0; --i)
+        {
+            Cooldown = i;
+            yield return new WaitForSeconds(1f);
+        }
+
+        // yield return new WaitForSeconds(_pauseDuration);
+        IsOnCooldown = true;
+
+        for (int i = _pauseCooldown; i > 0; --i)
+        {
+            Cooldown = i;
+            yield return new WaitForSeconds(1f);
+        }
+
+        IsOnCooldown = false;
     }
 }
