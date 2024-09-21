@@ -533,7 +533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f812a2a3539e2b6468a5daea440124ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 1
+  _moveSpeed: 5
   IsMoving: 1
 --- !u!212 &619301748
 SpriteRenderer:
@@ -597,7 +597,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -16.82, y: 0, z: 0}
-  m_LocalScale: {x: 0.572, y: 0.572, z: 0.572}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -907,9 +907,9 @@ Transform:
   m_GameObject: {fileID: 798998384}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.82, y: 0.68926007, z: 0}
-  m_LocalScale: {x: 0.572, y: 0.572, z: 0.572}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -16.82, y: 1.5682, z: 0}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

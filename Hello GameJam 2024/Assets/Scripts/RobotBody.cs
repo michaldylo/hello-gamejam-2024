@@ -13,6 +13,6 @@ public class RobotBody : MonoBehaviour
 
     private void Update()
     {
-        transform.position = _wheelTransform.position + new Vector3(0f, 0.69f, 0f);
+        transform.position = _wheelTransform.position + new Vector3(0f, 1.5682f, 0f);
     }
 }
