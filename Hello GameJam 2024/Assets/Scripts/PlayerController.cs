@@ -7,10 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 5.0f;
     private Rigidbody2D _rb;
-    private bool _isMoving = true;
-    [SerializeField] private float _pauseDuration = 2f;
-    [SerializeField] private float _pauseCooldown = 6f;
-    private bool _isOnCooldown = false;
+    public bool IsMoving = true;
 
     private void Start()
     {
@@ -19,15 +16,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Pause"))
-        {
-            if (!_isOnCooldown)
-            {
-                StartCoroutine(Pause());
-                StartCoroutine(StartCooldown());
-            }
-        }
-
         if (Input.GetButtonDown("Reset"))
         {
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
@@ -36,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_isMoving)
+        if (IsMoving)
         {
             Move();
         }
@@ -45,20 +33,5 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         _rb.MovePosition(_rb.position + _moveSpeed * Time.fixedDeltaTime * new Vector2(1, 0));
-    }
-
-    private IEnumerator Pause()
-    {
-        _isMoving = false;
-        _rb.velocity = Vector2.zero;
-        yield return new WaitForSeconds(_pauseDuration);
-        _isMoving = true;
-    }
-
-    private IEnumerator StartCooldown()
-    {
-        _isOnCooldown = true;
-        yield return new WaitForSeconds(_pauseDuration + _pauseCooldown);
-        _isOnCooldown = false;
     }
 }
