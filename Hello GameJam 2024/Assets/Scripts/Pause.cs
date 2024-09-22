@@ -6,7 +6,7 @@ public class Pause : MonoBehaviour
 {
     private Rigidbody2D _rb;
     [SerializeField] private int _pauseDuration = 2;
-    [SerializeField] private int _pauseCooldown = 6;
+    [SerializeField] private int _pauseCooldown = 5;
     [HideInInspector] public bool IsOnCooldown = false;
     [HideInInspector] public bool IsPaused = false;
     [HideInInspector] public int Cooldown;
