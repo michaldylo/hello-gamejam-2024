@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pauseDuration: 2
-  _pauseCooldown: 6
+  _pauseCooldown: 5
   IsOnCooldown: 0
   IsPaused: 0
   Cooldown: 0
